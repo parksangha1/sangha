@@ -8,9 +8,7 @@ public class MenuManager {
 		System.out.println("3. Edit Vehicle Owner");
 		System.out.println("4. View Vehicle Owner");
 		System.out.println("5. Exit Vehicle Owner");
-		System.out.println("test");
-		System.out.println("test2");
-
+	
 	}
 
 }
