@@ -20,22 +20,55 @@ public class MenuManager {
 			num=input.nextInt();
 			switch (num) {
 			case 1:
-				System.out.print("Vehicle Owner Name : ");
-				String VehicleOwnerName = input.next();
-				System.out.print("Vehicle's Number : ");
-				int VehicleNumber = input.nextInt();
-				System.out.print("A type of car : ");
-				String typeofcar = input.next();
-				System.out.print("Owner's Applicable Department : ");
-				String department = input.next();
+				addVO();
 				break;
-				
 			case 2:
+				deleteVO();
+				break;
 			case 3:
+				editVO();
+				break;
 			case 4:
+				viewVO();
+				break;
 			case 5:
+				
 			case 6:
 			}
 		}
+		
+	}
+	public static void addVO() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Vehicle Owner Name : ");
+		String VehicleOwnerName = input.next();
+		System.out.println(VehicleOwnerName);
+		System.out.print("Vehicle's Number : ");
+		int VehicleNumber = input.nextInt();
+		System.out.println(VehicleNumber);
+		System.out.print("A type of car : ");
+		String Typeofcar = input.next();
+		System.out.println(Typeofcar);
+		System.out.print("Owner's Applicable Department : ");
+		String Department = input.next();
+		System.out.println(Department);
+	}
+	public static void deleteVO() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Vehicle Owner Name : ");
+		String VehicleOwnerName = input.next();
+		System.out.println("Delete Vehicle Owner Name");
+	}
+	public static void editVO() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Vehicle Owner Name : ");
+		String VehicleOwnerName = input.next();
+		System.out.println("Edit Vehicle Owner Name");
+	}
+	public static void viewVO() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Vehicle Owner Name : ");
+		String VehicleOwnerName = input.next();
+		System.out.println("View Vehicle Owner Name");
 	}
 }
