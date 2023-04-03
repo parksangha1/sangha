@@ -20,16 +20,16 @@ public class MenuManager {
 			num=input.nextInt();
 			switch (num) {
 			case 1:
-				addVO();
+				addVeicleOwner();
 				break;
 			case 2:
-				deleteVO();
+				deleteVeicleOwner();
 				break;
 			case 3:
-				editVO();
+				editVeicleOwner();
 				break;
 			case 4:
-				viewVO();
+				viewVeicleOwner();
 				break;
 			case 5:
 				
@@ -38,7 +38,7 @@ public class MenuManager {
 		}
 		
 	}
-	public static void addVO() {
+	public static void addVeicleOwner() {
 		Scanner input = new Scanner(System.in);
 		System.out.print("Vehicle Owner Name : ");
 		String VehicleOwnerName = input.next();
@@ -53,19 +53,19 @@ public class MenuManager {
 		String Department = input.next();
 		System.out.println(Department);
 	}
-	public static void deleteVO() {
+	public static void deleteVeicleOwner() {
 		Scanner input = new Scanner(System.in);
 		System.out.print("Vehicle Owner Name : ");
 		String VehicleOwnerName = input.next();
 		System.out.println("Delete Vehicle Owner Name");
 	}
-	public static void editVO() {
+	public static void editVeicleOwner() {
 		Scanner input = new Scanner(System.in);
 		System.out.print("Vehicle Owner Name : ");
 		String VehicleOwnerName = input.next();
 		System.out.println("Edit Vehicle Owner Name");
 	}
-	public static void viewVO() {
+	public static void viewVeicleOwner() {
 		Scanner input = new Scanner(System.in);
 		System.out.print("Vehicle Owner Name : ");
 		String VehicleOwnerName = input.next();
