@@ -5,9 +5,10 @@ import java.util.Scanner;
 public class MenuManager {
 
 	public static void main(String[] args) {
-		int num=0;
 		Scanner input = new Scanner(System.in);
+		VeicleOwnerManager veicleOwnerManager = new VeicleOwnerManager(input);
 		
+		int num=0;
 		while(num!=6) {
 			System.out.println("*** Student Management System Menu ***");
 			System.out.println("1. Add Vehicle Owner");
@@ -20,16 +21,16 @@ public class MenuManager {
 			num=input.nextInt();
 			switch (num) {
 			case 1:
-				addVeicleOwner();
+				veicleOwnerManager.addVeicleOwner();
 				break;
 			case 2:
-				deleteVeicleOwner();
+				veicleOwnerManager.deleteVeicleOwner();
 				break;
 			case 3:
-				editVeicleOwner();
+				veicleOwnerManager.editVeicleOwner();
 				break;
 			case 4:
-				viewVeicleOwner();
+				veicleOwnerManager.viewVeicleOwner();
 				break;
 			case 5:
 				
@@ -38,37 +39,5 @@ public class MenuManager {
 		}
 		
 	}
-	public static void addVeicleOwner() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Vehicle Owner Name : ");
-		String VehicleOwnerName = input.next();
-		System.out.println(VehicleOwnerName);
-		System.out.print("Vehicle's Number : ");
-		int VehicleNumber = input.nextInt();
-		System.out.println(VehicleNumber);
-		System.out.print("A type of car : ");
-		String Typeofcar = input.next();
-		System.out.println(Typeofcar);
-		System.out.print("Owner's Applicable Department : ");
-		String Department = input.next();
-		System.out.println(Department);
-	}
-	public static void deleteVeicleOwner() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Vehicle Owner Name : ");
-		String VehicleOwnerName = input.next();
-		System.out.println("Delete Vehicle Owner Name");
-	}
-	public static void editVeicleOwner() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Vehicle Owner Name : ");
-		String VehicleOwnerName = input.next();
-		System.out.println("Edit Vehicle Owner Name");
-	}
-	public static void viewVeicleOwner() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Vehicle Owner Name : ");
-		String VehicleOwnerName = input.next();
-		System.out.println("View Vehicle Owner Name");
-	}
+
 }
