@@ -10,7 +10,7 @@ public class VehicleOwnerManager {
 		this.input=input;
 	}
 	public void addVehicleOwner() {
-		vehicleOwner = new VehicleOwner();
+		VehicleOwner vehicleOwner = new VehicleOwner();
 		System.out.print("Vehicle Owner Name : ");
 		vehicleOwner.name = input.next();
 		System.out.print("Vehicle's Number : ");
