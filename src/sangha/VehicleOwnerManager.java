@@ -3,6 +3,10 @@ package sangha;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import vehicleowner.Guest;
+import vehicleowner.VehicleOwner;
+
+
 public class VehicleOwnerManager {
 	ArrayList<VehicleOwner> vehicleOwners = new ArrayList<VehicleOwner>();
 	Scanner input;
@@ -10,23 +14,36 @@ public class VehicleOwnerManager {
 		this.input=input;
 	}
 	public void addVehicleOwner() {
-		VehicleOwner vehicleOwner = new VehicleOwner();
-		System.out.print("Vehicle Owner Name : ");
-		vehicleOwner.name = input.next();
-		System.out.print("Vehicle's Number : ");
-		vehicleOwner.number = input.nextInt();
-		System.out.print("A type of car : ");
-		vehicleOwner.type = input.next();
-		System.out.print("Owner's Applicable Department : ");
-		vehicleOwner.department = input.next();
-		vehicleOwners.add(vehicleOwner);
+		int kind=0;
+		VehicleOwner vehicleOwner;
+		while(kind != 1 && kind != 2) {
+			System.out.print("1 for Head Office  ");
+			System.out.print("2 for Guest  ");
+			System.out.print("Select num for Vehicle Owner Kind Between 1 and 2: ");
+			kind = input.nextInt();
+			if(kind == 1) {
+				vehicleOwner = new VehicleOwner();
+				vehicleOwner.getUserInput(input);
+				vehicleOwners.add(vehicleOwner);
+				break;
+			}
+			else if(kind == 2) {
+				vehicleOwner = new Guest();
+				vehicleOwner.getUserInput(input);
+				vehicleOwners.add(vehicleOwner);
+				break;
+			}
+			else {
+				System.out.print("Select num for Vehicle Owner Kind Between 1 and 2: ");
+			}
+		}
 	}
 	public void deleteVehicleOwner() {
 		System.out.print("Vehicle Owner Number: ");
 	      int VehicleOwnerNumber =input.nextInt();
 	      int index = -1;
 	      for(int i=0; i<vehicleOwners.size(); i++) {
-	         if(vehicleOwners.get(i).number==VehicleOwnerNumber) {
+	         if(vehicleOwners.get(i).getNumber()==VehicleOwnerNumber) {
 	            index = i;
 	            break;
 	         }
@@ -44,7 +61,7 @@ public class VehicleOwnerManager {
 	      int VehicleOwnerNumber=input.nextInt();
 	      for(int i=0;i<vehicleOwners.size();i++) {
 	         VehicleOwner vehicleOwner = vehicleOwners.get(i);
-	         if(vehicleOwner.number == VehicleOwnerNumber) {
+	         if(vehicleOwner.getNumber() == VehicleOwnerNumber) {
 	            int num=-1;
 	            while(num!=5) {
 	               System.out.println("**Vehicle Owner Info Edit Menu**");
@@ -57,23 +74,27 @@ public class VehicleOwnerManager {
 	               num=input.nextInt();
 	               if(num==1) {
 	                  System.out.print("Vehicle Owner Number: ");
-	                  vehicleOwner.number=input.nextInt();
+	                  int number = input.nextInt();
+	                  vehicleOwner.setNumber(number);
 	               }
 	               else if(num==2) {
 	                  System.out.print("Vehicle Owner Name: ");
-	                  vehicleOwner.name=input.next();
+	                  String name = input.next();
+	                  vehicleOwner.setName(name);
 	               }
 	               else if(num==3) {
 	                  System.out.print("A type of car: ");
-	                  vehicleOwner.type=input.next();
+	                  String type = input.next();
+	                  vehicleOwner.setType(type);
 	               }
 	               else if(num==4) {
 	                  System.out.print("Veiw Owner's Applicable Department: ");
-	                  vehicleOwner.department=input.next();
+	                  String department = input.next();
+	                  vehicleOwner.setDepartment(department);
 	               }
 	               else {
 	                  continue;
-	               }               
+	               }
 	            }
 	            break;
 	         }
@@ -82,6 +103,7 @@ public class VehicleOwnerManager {
 	public void viewVehicleOwners() {
 		//System.out.print("Vehicle's Number : ");
 		//int vehicleOwnerNumber = input.nextInt();
+		System.out.println("# of registered veihicle owners: "+vehicleOwners.size());
 		for(int i=0;i<vehicleOwners.size();i++) {
 			vehicleOwners.get(i).printInfo();
 		}
