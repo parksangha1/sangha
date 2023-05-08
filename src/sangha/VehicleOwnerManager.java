@@ -3,8 +3,10 @@ package sangha;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import vehicleowner.BranchOfficeVehicleOwner;
 import vehicleowner.Guest;
 import vehicleowner.VehicleOwner;
+import vehicleowner.VehicleOwnerKind;
 
 
 public class VehicleOwnerManager {
@@ -19,16 +21,23 @@ public class VehicleOwnerManager {
 		while(kind != 1 && kind != 2) {
 			System.out.print("1 for Head Office  ");
 			System.out.print("2 for Guest  ");
-			System.out.print("Select num for Vehicle Owner Kind Between 1 and 2: ");
+			System.out.print("3 for Branch Office  ");
+			System.out.print("Select num 1, 2, or 3 for Vehicle Owner Kind: ");
 			kind = input.nextInt();
 			if(kind == 1) {
-				vehicleOwner = new VehicleOwner();
+				vehicleOwner = new VehicleOwner(VehicleOwnerKind.HeadOffice);
 				vehicleOwner.getUserInput(input);
 				vehicleOwners.add(vehicleOwner);
 				break;
 			}
 			else if(kind == 2) {
-				vehicleOwner = new Guest();
+				vehicleOwner = new Guest(VehicleOwnerKind.Guest);
+				vehicleOwner.getUserInput(input);
+				vehicleOwners.add(vehicleOwner);
+				break;
+			}
+			else if(kind == 3) {
+				vehicleOwner = new BranchOfficeVehicleOwner(VehicleOwnerKind.BranchOffice);
 				vehicleOwner.getUserInput(input);
 				vehicleOwners.add(vehicleOwner);
 				break;
