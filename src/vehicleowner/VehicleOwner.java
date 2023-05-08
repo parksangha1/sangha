@@ -11,11 +11,23 @@ public class VehicleOwner {
 	
 	public VehicleOwner() {
 	}
+	public VehicleOwner(VehicleOwnerKind kind) {
+		this.kind=kind;
+	}
 	public VehicleOwner(String name, int number) {
 		this.name=name;
 		this.number=number;	
 	}
+	
 	public VehicleOwner(String name, int number, String type, String department) {
+		this.name=name;
+		this.number=number;
+		this.type=type;
+		this.department=department;	
+	}
+	
+	public VehicleOwner(VehicleOwnerKind kind, String name, int number, String type, String department) {
+		this.kind=kind;
 		this.name=name;
 		this.number=number;
 		this.type=type;
@@ -52,8 +64,22 @@ public class VehicleOwner {
 	public void setDepartment(String department) {
 		this.department = department;
 	}
+	
 	public void printInfo() {
-		System.out.println("name: "+name+" number: "+number+" type: "+type+" department: "+department);
+		String skind = "none";
+		switch(this.kind) {
+		case HeadOffice:
+			skind = "Head";
+			break;
+		case Guest:
+			skind = "Guest";
+			break;
+		case BranchOffice:
+			skind = "Branch";
+			break;
+		default:
+		}
+		System.out.println("kind: "+skind+" name: "+name+" number: "+number+" type: "+type+" department: "+department);
 	}
 	
 	public void getUserInput(Scanner input) {

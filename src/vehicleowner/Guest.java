@@ -3,6 +3,11 @@ package vehicleowner;
 import java.util.Scanner;
 
 public class Guest extends VehicleOwner {
+	
+	public Guest(VehicleOwnerKind kind) {
+		super(kind);
+	}
+	
 	public void getUserInput(Scanner input) {
 		System.out.print("Vehicle Owner Name : ");
 		String name = input.next();
