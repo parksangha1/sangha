@@ -2,7 +2,7 @@ package vehicleowner;
 
 import java.util.Scanner;
 
-public class BranchOfficeVehicleOwner extends VehicleOwner {
+public class BranchOfficeVehicleOwner extends VehicleOwner implements VehicleOwnerInput {
 	protected String BranchDepartment;
 	
 	public BranchOfficeVehicleOwner(VehicleOwnerKind kind) {
@@ -38,9 +38,9 @@ public class BranchOfficeVehicleOwner extends VehicleOwner {
 			}
 			else {
 			}
-			
 		}
 	}
+	
 	public void printInfo() {
 		String skind = "none";
 		switch(this.kind) {
