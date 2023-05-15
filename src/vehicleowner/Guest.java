@@ -2,7 +2,7 @@ package vehicleowner;
 
 import java.util.Scanner;
 
-public class Guest extends VehicleOwner {
+public class Guest extends VehicleOwner implements VehicleOwnerInput {
 	
 	public Guest(VehicleOwnerKind kind) {
 		super(kind);
@@ -36,5 +36,21 @@ public class Guest extends VehicleOwner {
 			}
 			
 		}
+	}
+	public void printInfo() {
+		String skind = "none";
+		switch(this.kind) {
+		case HeadOffice:
+			skind = "Head";
+			break;
+		case Guest:
+			skind = "Guest";
+			break;
+		case BranchOffice:
+			skind = "Branch";
+			break;
+		default:
+		}
+		System.out.println("kind: "+skind+" name: "+name+" number: "+number+" type: "+type+" department: "+department);
 	}
 }
