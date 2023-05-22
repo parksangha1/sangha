@@ -2,7 +2,9 @@ package vehicleowner;
 
 import java.util.Scanner;
 
-public class BranchOfficeVehicleOwner extends VehicleOwner implements VehicleOwnerInput {
+import exception.DepartmentFormatException;
+
+public class BranchOfficeVehicleOwner extends OfficeVehicleOwner {
 	protected String BranchDepartment;
 	
 	public BranchOfficeVehicleOwner(VehicleOwnerKind kind) {
@@ -10,51 +12,38 @@ public class BranchOfficeVehicleOwner extends VehicleOwner implements VehicleOwn
 	}
 	
 	public void getUserInput(Scanner input) {
-		System.out.print("Vehicle Owner Name : ");
-		String name = input.next();
-		this.setName(name);
-		
-		System.out.print("Vehicle's Number : ");
-		int number = input.nextInt();
-		this.setNumber(number);
-		
-		System.out.print("A type of car : ");
-		String type = input.next();
-		this.setType(type);
-		
+		setVehicleOwnerName(input);
+		setVehicleNumber(input);
+		setVehicletype(input);
+		setVehicleOwnerDepartmentwithYN(input);
+		setBranchOfficeDepartmentwithYN(input);
+	}
+	
+	public void setBranchOfficeDepartmentwithYN(Scanner input) {
 		char answer='x';
 		while(answer!='y'&&answer!='Y'&&answer!='n'&&answer!='N') {
-			System.out.print("Do you have a department in your office? (Y/N)");
+			System.out.print("Do you have a department 'in your office'? (Y/N)");
 			answer=input.next().charAt(0);
-			if(answer=='y'||answer=='Y') {
-				System.out.print("Owner's Applicable Department 'In Your Office': ");
-				String department = input.next();
-				this.setDepartment(department);
-				break;
+			try{
+				if(answer=='y'||answer=='Y') {
+					setVehicleOwnerDepartment(input);
+					break;
+				}
+				else if(answer=='n'||answer=='N') {
+					this.setDepartment("");
+					break;
+				}
+				else {
+				}
 			}
-			else if(answer=='n'||answer=='N') {
-				this.setDepartment("");
-				break;
-			}
-			else {
+			catch(DepartmentFormatException e) {
+				 System.out.println("Incorrect Departmaent Format, put the departmnent that contains -");
 			}
 		}
 	}
 	
 	public void printInfo() {
-		String skind = "none";
-		switch(this.kind) {
-		case HeadOffice:
-			skind = "Head";
-			break;
-		case Guest:
-			skind = "Guest";
-			break;
-		case BranchOffice:
-			skind = "Branch";
-			break;
-		default:
-		}
+		String skind = getKindString();
 		System.out.println("kind: "+skind+" name: "+name+" number: "+number+" type: "+type+" department: "+department+" BranchOffice-department: "+department);
 	}
 }
