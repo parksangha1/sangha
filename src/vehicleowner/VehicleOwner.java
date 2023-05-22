@@ -2,7 +2,9 @@ package vehicleowner;
 
 import java.util.Scanner;
 
-public abstract class VehicleOwner {
+import exception.DepartmentFormatException;
+
+public abstract class VehicleOwner implements VehicleOwnerInput {
 	protected VehicleOwnerKind kind = VehicleOwnerKind.HeadOffice;
 	protected String name;
 	protected int number;
@@ -61,8 +63,60 @@ public abstract class VehicleOwner {
 	public String getDepartment() {
 		return department;
 	}
-	public void setDepartment(String department) {
+	public void setDepartment(String department) throws DepartmentFormatException{
+		if(!department.contains("-") && !department.equals("")) {
+			throw new DepartmentFormatException();
+		}
+		
 		this.department = department;
 	}
 	public abstract void printInfo();
+	
+	public void setVehicleNumber(Scanner input) {
+		System.out.print("Vehicle Owner Number: ");
+        int number = input.nextInt();
+        this.setNumber(number);
+	}
+	
+	public void setVehicleOwnerName(Scanner input) {
+		 System.out.print("Vehicle Owner Name: ");
+         String name = input.next();
+         this.setName(name);
+	}
+	
+	public void setVehicletype(Scanner input) {
+		System.out.print("A type of car: ");
+        String type = input.next();
+        this.setType(type);
+	}
+	
+	public void setVehicleOwnerDepartment(Scanner input) {
+		String department = "";
+		while(!department.contains("-")) {
+			System.out.print("Vehicle Owner's Applicable Department: ");
+			department = input.next();
+	        try{
+	        	 this.setDepartment(department);
+	         }
+	         catch(DepartmentFormatException e) {
+	        	 System.out.println("Incorrect Departmaent Format, put the departmnent that contains -");
+	         }
+		}
+	}
+	public String getKindString() {
+		String skind = "none";
+		switch(this.kind) {
+		case HeadOffice:
+			skind = "Head";
+			break;
+		case Guest:
+			skind = "Guest";
+			break;
+		case BranchOffice:
+			skind = "Branch";
+			break;
+		default:
+		}
+		return skind;
+	}
 }
