@@ -1,5 +1,6 @@
 package sangha;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -11,9 +12,14 @@ import vehicleowner.VehicleOwnerInput;
 import vehicleowner.VehicleOwnerKind;
 
 
-public class VehicleOwnerManager {
+public class VehicleOwnerManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4856891444126790873L;
+	
 	ArrayList<VehicleOwnerInput> vehicleOwners = new ArrayList<VehicleOwnerInput>();
-	Scanner input;
+	transient Scanner input;
 	VehicleOwnerManager(Scanner input){
 		this.input=input;
 	}

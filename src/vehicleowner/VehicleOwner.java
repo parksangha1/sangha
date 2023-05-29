@@ -1,10 +1,16 @@
 package vehicleowner;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.DepartmentFormatException;
 
-public abstract class VehicleOwner implements VehicleOwnerInput {
+public abstract class VehicleOwner implements VehicleOwnerInput,Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7518902162516801710L;
+	
 	protected VehicleOwnerKind kind = VehicleOwnerKind.HeadOffice;
 	protected String name;
 	protected int number;
