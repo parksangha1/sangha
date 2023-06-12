@@ -8,6 +8,7 @@ import java.util.Scanner;
 import vehicleowner.BranchOfficeVehicleOwner;
 import vehicleowner.Guest;
 import vehicleowner.HeadOfficeVehicleOwner;
+import vehicleowner.VehicleOwner;
 import vehicleowner.VehicleOwnerInput;
 import vehicleowner.VehicleOwnerKind;
 
@@ -20,8 +21,13 @@ public class VehicleOwnerManager implements Serializable {
 	
 	ArrayList<VehicleOwnerInput> vehicleOwners = new ArrayList<VehicleOwnerInput>();
 	transient Scanner input;
+	
 	VehicleOwnerManager(Scanner input){
 		this.input=input;
+	}
+	
+	public void setScanner(Scanner input) {
+		this.input = input;
 	}
 	public void addVehicleOwner() {
 		int kind=0;
@@ -127,6 +133,13 @@ public class VehicleOwnerManager implements Serializable {
 		}
 	}
 	
+	public int size() {
+		return vehicleOwners.size();
+	}
+	
+	public VehicleOwnerInput get(int index) {
+		return (VehicleOwner) vehicleOwners.get(index);
+	}
 	public void showEditMenu() {
 		System.out.println("**Vehicle Owner Info Edit Menu**");
         System.out.println("1. Edit Number");
@@ -136,5 +149,4 @@ public class VehicleOwnerManager implements Serializable {
         System.out.println("5. Exit");
         System.out.println("Select one number between 1 - 6: ");
 	}
-
 }

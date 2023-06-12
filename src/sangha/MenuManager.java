@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import gui.WindowFrame;
 import log.EventLogger;
 
 public class MenuManager {
@@ -17,12 +18,17 @@ public class MenuManager {
 	public static void main(String[] args) {
 		
 		Scanner input = new Scanner(System.in);
-		VehicleOwnerManager vehicleOwnerManager = getObject("VehicleOwnermanager.ser");
-		if(vehicleOwnerManager == null) {
-			vehicleOwnerManager = new VehicleOwnerManager(input);
+		VehicleOwnerManager vehicleownerManager = getObject("VehicleOwnermanager.ser");
+		
+		if(vehicleownerManager == null) {
+			vehicleownerManager = new VehicleOwnerManager(input);
+		}else {
+			
 		}
-		selectMenu(input, vehicleOwnerManager);
-		putObject(vehicleOwnerManager,"VehicleOwnermanager.ser");
+		WindowFrame frame = new WindowFrame(vehicleownerManager);
+		
+		selectMenu(input, vehicleownerManager);
+		putObject(vehicleownerManager,"VehicleOwnermanager.ser");
 	}
 	
 	public static void selectMenu(Scanner input, VehicleOwnerManager vehicleOwnerManager) {

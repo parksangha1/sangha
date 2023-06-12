@@ -10,9 +10,16 @@ public interface VehicleOwnerInput {
 	
 	public void setNumber(int number);
 	
+	public String getName();
+	
 	public void setName(String name);
 	
+	public String getType();
+	
 	public void setType(String type);
+	
+	public String getDepartment();
+	
 	
 	public void setDepartment(String department) throws DepartmentFormatException;
 	
