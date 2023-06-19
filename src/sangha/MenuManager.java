@@ -26,7 +26,7 @@ public class MenuManager {
 			
 		}
 		WindowFrame frame = new WindowFrame(vehicleownerManager);
-		
+
 		selectMenu(input, vehicleownerManager);
 		putObject(vehicleownerManager,"VehicleOwnermanager.ser");
 	}
@@ -84,7 +84,6 @@ public class MenuManager {
 	
 	public static VehicleOwnerManager getObject(String filename) {
 		VehicleOwnerManager vehicleOwnerManager = null;
-		
 		try {
 			FileInputStream file = new FileInputStream(filename);
 			ObjectInputStream in = new ObjectInputStream(file);

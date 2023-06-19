@@ -7,7 +7,7 @@ import sangha.VehicleOwnerManager;
 
 public class WindowFrame extends JFrame {
 	
-	VehicleOwnerManager vehicleownerManager;
+VehicleOwnerManager vehicleownerManager;
 	
 	MenuSelection menuSelection;
 	VehicleOwnerAdder vehicleowneradder;
@@ -20,7 +20,7 @@ public class WindowFrame extends JFrame {
 		
 		this.vehicleownerManager = vehicleownerManager;
 		menuSelection = new MenuSelection(this);
-		vehicleowneradder = new VehicleOwnerAdder(this);
+		vehicleowneradder = new VehicleOwnerAdder(this,this.vehicleownerManager);
 		vehicleownerviewer = new VehicleOwnerViewer(this,this.vehicleownerManager);
 		
 		

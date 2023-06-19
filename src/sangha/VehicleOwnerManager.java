@@ -29,6 +29,15 @@ public class VehicleOwnerManager implements Serializable {
 	public void setScanner(Scanner input) {
 		this.input = input;
 	}
+	public void addVehicleOwner(String number, String name, String type, String department) {
+		VehicleOwnerInput vehicleOwnerInput = new HeadOfficeVehicleOwner(VehicleOwnerKind.HeadOffice);
+		vehicleOwnerInput.getUserInput(input);
+		vehicleOwners.add(vehicleOwnerInput);
+		
+	}
+	public void addVehicleOwner(VehicleOwnerInput vehicleownerInput) {
+		vehicleOwners.add(vehicleownerInput);
+	}
 	public void addVehicleOwner() {
 		int kind=0;
 		VehicleOwnerInput vehicleOwnerInput;

@@ -7,12 +7,19 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import listeners.VehicleOwnerAdderCancelListener;
+import listeners.VehicleOwnerAdderListener;
+import sangha.VehicleOwnerManager;
+
 public class VehicleOwnerAdder extends JPanel {
 	
-	WindowFrame frame;
+WindowFrame frame;
 	
-	public VehicleOwnerAdder(WindowFrame frame) {
+	VehicleOwnerManager vehicleownerManager;
+
+	public VehicleOwnerAdder(WindowFrame frame,	VehicleOwnerManager vehicleownerManager) {
 		this.frame = frame;
+		this.vehicleownerManager = vehicleownerManager;
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
@@ -38,11 +45,19 @@ public class VehicleOwnerAdder extends JPanel {
 		JLabel labelDepartment = new JLabel("Owner's Department: ", JLabel.TRAILING);
 		JTextField fieldDepartment = new JTextField(10);
 		labelDepartment.setLabelFor(fieldDepartment);
+		
+		
+		JButton saveButton = new JButton("save");
+		saveButton.addActionListener(new VehicleOwnerAdderListener(fieldNumber,fieldName,fieldType,fieldDepartment,vehicleownerManager));
+		
+		JButton cancelButton = new JButton("cancel");
+		cancelButton.addActionListener(new VehicleOwnerAdderCancelListener(frame));
+		
 		panel.add(labelDepartment);
 		panel.add(fieldDepartment);
 		
-		panel.add(new JButton("save"));
-		panel.add(new JButton("cancel"));
+		panel.add(saveButton);
+		panel.add(cancelButton);
 		
 		SpringUtilities.makeCompactGrid(panel, 5, 2, 6, 6, 6, 6);
 		

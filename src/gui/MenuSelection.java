@@ -12,7 +12,7 @@ import listeners.ButtonViewListener;
 
 public class MenuSelection extends JPanel {
 	
-	WindowFrame frame;
+WindowFrame frame;
 	
 	public MenuSelection(WindowFrame frame) {
 		this.frame = frame;
